@@ -1,3 +1,16 @@
+/**
+ * @file Renault_BT_Emulator.ino
+ * @brief Lock-free ESP32 Bluetooth A2DP receiver and CD-changer emulator for Renault Tuner List.
+ * 
+ * @note CRITICAL DEPENDENCY:
+ * This firmware requires the ESP32-A2DP library by Phil Schatzmann.
+ * Repository: https://github.com/pschatzmann/ESP32-A2DP
+ * Ensure the library is installed in your Arduino/libraries folder or defined in platformio.ini.
+ * 
+ * Hardware integration mandates strict physical isolation of I2S_NUM_0 for the S/PDIF BMC carrier,
+ * while the Bluetooth stack is routed to a phantom I2S_NUM_1 to prevent FreeRTOS spinlock deadlocks.
+ */
+ 
 #include <Arduino.h>
 #include <atomic>
 #include "freertos/ringbuf.h"
